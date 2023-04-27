@@ -62,14 +62,11 @@ public class Q_Answers {
                 for (int j = 1; j < sep_C1.size(); j++) {
                     if (sep_C1.get(j).getMatch_id().equals(temp_str)) {
                         Economic_Bowler_total_bowl.put(sep_C1.get(j).getBowler(), Economic_Bowler_total_bowl.getOrDefault(sep_C1.get(j).getBowler(), 0) + 1);
+                        Economic_Bowler_total_runs.put(sep_C1.get(j).getBowler(), Economic_Bowler_total_runs.getOrDefault(sep_C1.get(j).getBowler(), 0) +
+                                Integer.valueOf(sep_C1.get(j).getTotal_runs()));
                     }
                 }
-                for (int k = 1; k < sep_C1.size(); k++){
-                    if (sep_C1.get(k).getMatch_id().equals(temp_str)){
-                        Economic_Bowler_total_runs.put(sep_C1.get(k).getBowler(), Economic_Bowler_total_runs.getOrDefault(sep_C1.get(k).getBowler(), 0) +
-                                Integer.valueOf(sep_C1.get(k).getTotal_runs()));
-                    }
-                }
+
             }
         }
 
