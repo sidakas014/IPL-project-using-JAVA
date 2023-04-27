@@ -48,7 +48,7 @@ public class Q_Answers {
             System.out.println(itrate.getKey() + " => " + itrate.getValue());
         }
     }
-
+//04 start
     static void top_economical_bowler(ArrayList<Matches> sep_C, ArrayList<Deliveries> sep_C1){
         HashMap<String, Integer> Economic_Bowler_total_bowl = new HashMap();
         HashMap<String, Integer> Economic_Bowler_total_runs = new HashMap();
@@ -73,16 +73,16 @@ public class Q_Answers {
         for (Map.Entry<String, Integer> itrate : Economic_Bowler_total_bowl.entrySet()){
             double Economy_rate = ((double) Economic_Bowler_total_runs.get(itrate.getKey())*6.0)/(double) Economic_Bowler_total_bowl.get(itrate.getKey());
             Economy_rate_Map.put(itrate.getKey(), Economy_rate);
-            System.out.println(Economy_rate);
+
         }
         double min = Double.MAX_VALUE;
         String str = "";
         for (Map.Entry<String, Double> itrate : Economy_rate_Map.entrySet()){
-            if (itrate.getValue() < min ){
+            if (min> itrate.getValue()  ){
                 min = itrate.getValue();
                 str = itrate.getKey();
             }
         }
-        System.out.println(str+" -"+min);
+        System.out.println(str+" => "+min);
     }
 }

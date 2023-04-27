@@ -1,5 +1,5 @@
 class Deliveries {
-     static int index_match_id=0, index_batting_team=2, index_extra_runs=16, index_bowler=7, index_total_runs=17 ;
+     static int index_match_id=0, index_batting_team=2, index_extra_runs=16, index_bowler=8, index_total_runs=17 ;
     final static String csvFile="deliveries.csv";
     String match_id, inning, batting_team, over, ball, batsman, non_striker, bowler, is_super_over, wide_runs,
            bye_runs, legbye_runs, noball_runs, penalty_runs, batsman_runs, extra_runs, total_runs, player_dissmissed,

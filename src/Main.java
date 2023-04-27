@@ -31,11 +31,15 @@ public class Main{
 
         // Q_Answers method call.
 
-        //Q_Answers.Matches_played_per_Year(sep_C);
-        //Q_Answers.No_of_matches_won_by_each_team(sep_C);
-        //Q_Answers.extra_runs_per_team(sep_C, sep_C1);
+        Q_Answers.Matches_played_per_Year(sep_C);
+        System.out.println("---------------------------------------------------------------------------");
+        Q_Answers.No_of_matches_won_by_each_team(sep_C);
+        System.out.println("---------------------------------------------------------------------------");
+        Q_Answers.extra_runs_per_team(sep_C, sep_C1);
+        System.out.println("---------------------------------------------------------------------------");
         Q_Answers.top_economical_bowler(sep_C, sep_C1);
-        //Q_Answers.toss_winner_team(sep_C);
+        System.out.println("---------------------------------------------------------------------------");
+        Q_Answers.toss_winner_team(sep_C);
 
     }
 }
