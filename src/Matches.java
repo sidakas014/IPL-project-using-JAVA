@@ -1,6 +1,6 @@
 
 class Matches{
-    private static final int index_id=0, index_season=1, index_winner=10, index_toss_winner=6;
+    static final int index_id=0, index_season=1, index_winner=10, index_toss_winner=6;
 
     final static String csvFile="matches.csv";
     String id, season, city, date, team1, team2, toss_winner, toss_decision, result, dl_applied, winner, win_by_runs,

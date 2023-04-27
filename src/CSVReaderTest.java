@@ -8,12 +8,12 @@ public class CSVReaderTest {
             FileReader fr = new FileReader(file);
             BufferedReader br = new BufferedReader(fr);
             String line = "";
-            //String[] tempArr;
-            ArrayList<String> mtc = new ArrayList();
+
+            ArrayList<String> tmp_whole_arr = new ArrayList();
             while ((line = br.readLine()) != null) {
-                mtc.add(line);
+                tmp_whole_arr.add(line);
             }
-            return mtc;
+            return tmp_whole_arr;
         } catch (FileNotFoundException fnfe) {
             fnfe.printStackTrace();
         } catch (IOException ioe) {
