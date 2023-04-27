@@ -69,15 +69,15 @@ public class Q_Answers {
             }
         }
 
-        HashMap<String, Integer> Economy_rate_Map = new HashMap();
+        HashMap<String, Double> Economy_rate_Map = new HashMap();
         for (Map.Entry<String, Integer> itrate : Economic_Bowler_total_bowl.entrySet()){
-            int Economy_rate = (Economic_Bowler_total_runs.get(itrate.getKey())*6)/Economic_Bowler_total_bowl.get(itrate.getKey());
+            double Economy_rate = ((double) Economic_Bowler_total_runs.get(itrate.getKey())*6.0)/(double) Economic_Bowler_total_bowl.get(itrate.getKey());
             Economy_rate_Map.put(itrate.getKey(), Economy_rate);
             System.out.println(Economy_rate);
         }
-        int min = Integer.MAX_VALUE;
+        double min = Double.MAX_VALUE;
         String str = "";
-        for (Map.Entry<String, Integer> itrate : Economy_rate_Map.entrySet()){
+        for (Map.Entry<String, Double> itrate : Economy_rate_Map.entrySet()){
             if (itrate.getValue() < min ){
                 min = itrate.getValue();
                 str = itrate.getKey();
