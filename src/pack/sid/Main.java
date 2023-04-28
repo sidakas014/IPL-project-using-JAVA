@@ -26,10 +26,10 @@ public class Main{
 
     //----------------Queries----------------
     //1st start
-    public static void matchesPlayedPerYear(ArrayList<Match> sep_C) {
+    public static void matchesPlayedPerYear(ArrayList<Match> FinalArrayListOfMatch) {
         HashMap<String, Integer> NoOfMatchesPlayed = new HashMap();
-        for (int j = 1; j < sep_C.size(); j++) {
-            NoOfMatchesPlayed.put(sep_C.get(j).getSeason(), NoOfMatchesPlayed.getOrDefault(sep_C.get(j).getSeason(), 0) + 1);
+        for (int j = 1; j < FinalArrayListOfMatch.size(); j++) {
+            NoOfMatchesPlayed.put(FinalArrayListOfMatch.get(j).getSeason(), NoOfMatchesPlayed.getOrDefault(FinalArrayListOfMatch.get(j).getSeason(), 0) + 1);
         }
         //Map Traversing
         for (Map.Entry<String, Integer> itrate : NoOfMatchesPlayed.entrySet()) {
@@ -37,25 +37,25 @@ public class Main{
         }
     }
     // 2th start
-    public static void noOfMatchesWonByEachTeam(ArrayList<Match> sep_C) {
+    public static void noOfMatchesWonByEachTeam(ArrayList<Match> FinalArrayListOfMatch) {
         HashMap<String, Integer> noOfMatchesWon = new HashMap();
-        for (int k = 1; k < sep_C.size(); k++) {
-            noOfMatchesWon.put(sep_C.get(k).getWinner(), noOfMatchesWon.getOrDefault(sep_C.get(k).getWinner(), 0) + 1);
+        for (int k = 1; k < FinalArrayListOfMatch.size(); k++) {
+            noOfMatchesWon.put(FinalArrayListOfMatch.get(k).getWinner(), noOfMatchesWon.getOrDefault(FinalArrayListOfMatch.get(k).getWinner(), 0) + 1);
         }
         for (Map.Entry<String, Integer> itrate : noOfMatchesWon.entrySet()) {
             System.out.println(itrate.getKey() + " -> " + itrate.getValue());
         }
     }
     //3th start
-    public  static void extraRunsPerTeam(ArrayList<Match> sep_C, ArrayList<Delivery> sep_C1) {
+    public  static void extraRunsPerTeam(ArrayList<Match> sep_C, ArrayList<Delivery> FinalArrayListOfDelivery) {
         HashMap<String, Integer> extraRuns = new HashMap();
         for (int i = 1; i < sep_C.size(); i++) {
             if (sep_C.get(i).getSeason().equals("2016")) {
-                String temp_str = sep_C.get(i).getId();
-                for (int j = 1; j < sep_C1.size(); j++) {
-                    if (sep_C1.get(j).getMatchId().equals(temp_str)) {
-                        extraRuns.put(sep_C1.get(j).getBattingTeam(), extraRuns.getOrDefault(sep_C1.get(j).getBattingTeam(), 0) +
-                                Integer.valueOf(sep_C1.get(j).getExtraRuns()));
+                String tempStr = sep_C.get(i).getId();
+                for (int j = 1; j < FinalArrayListOfDelivery.size(); j++) {
+                    if (FinalArrayListOfDelivery.get(j).getMatchId().equals(tempStr)) {
+                        extraRuns.put(FinalArrayListOfDelivery.get(j).getBattingTeam(), extraRuns.getOrDefault(FinalArrayListOfDelivery.get(j).getBattingTeam(), 0) +
+                                Integer.valueOf(FinalArrayListOfDelivery.get(j).getExtraRuns()));
                     }
                 }
             }
@@ -65,17 +65,17 @@ public class Main{
         }
     }
     //04 start
-    public static void topEconomicalBowler(ArrayList<Match> sep_C, ArrayList<Delivery> FinaleArrayListOfDeliveries){
+    public static void topEconomicalBowler(ArrayList<Match> FinalArrayListOfMatch, ArrayList<Delivery> FinaleArrayListOfDelivery){
         HashMap<String, Integer> economicBowlerTotalBowl = new HashMap();
         HashMap<String, Integer> economicBowlerTotalRuns = new HashMap();
-        for (int i = 1; i < sep_C.size(); i++){
-            if (sep_C.get(i).getSeason().equals("2015")) {
-                String temp_str = sep_C.get(i).getId();
-                for (int j = 1; j < FinaleArrayListOfDeliveries.size(); j++) {
-                    if (FinaleArrayListOfDeliveries.get(j).getMatchId().equals(temp_str)) {
-                        economicBowlerTotalBowl.put(FinaleArrayListOfDeliveries.get(j).getBowler(), economicBowlerTotalBowl.getOrDefault(FinaleArrayListOfDeliveries.get(j).getBowler(), 0) + 1);
-                        economicBowlerTotalRuns.put(FinaleArrayListOfDeliveries.get(j).getBowler(), economicBowlerTotalRuns.getOrDefault(FinaleArrayListOfDeliveries.get(j).getBowler(), 0) +
-                                Integer.valueOf(FinaleArrayListOfDeliveries.get(j).getTotal_runs()));
+        for (int i = 1; i < FinalArrayListOfMatch.size(); i++){
+            if (FinalArrayListOfMatch.get(i).getSeason().equals("2015")) {
+                String tempStr = FinalArrayListOfMatch.get(i).getId();
+                for (int j = 1; j < FinaleArrayListOfDelivery.size(); j++) {
+                    if (FinaleArrayListOfDelivery.get(j).getMatchId().equals(tempStr)) {
+                        economicBowlerTotalBowl.put(FinaleArrayListOfDelivery.get(j).getBowler(), economicBowlerTotalBowl.getOrDefault(FinaleArrayListOfDelivery.get(j).getBowler(), 0) + 1);
+                        economicBowlerTotalRuns.put(FinaleArrayListOfDelivery.get(j).getBowler(), economicBowlerTotalRuns.getOrDefault(FinaleArrayListOfDelivery.get(j).getBowler(), 0) +
+                                Integer.valueOf(FinaleArrayListOfDelivery.get(j).getTotal_runs()));
                     }
                 }
 
