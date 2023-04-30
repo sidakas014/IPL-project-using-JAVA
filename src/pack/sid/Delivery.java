@@ -1,28 +1,29 @@
 package pack.sid;
 class Delivery {
-    private  int index_match_id=0, index_batting_team=2, index_extra_runs=16, index_bowler=8, index_total_runs=17 ;
-    private String match_id, inning, batting_team, bowling_team, over, ball, batsman, non_striker, bowler, is_super_over, wide_runs,
-           bye_runs, legbye_runs, noball_runs, penalty_runs, batsman_runs, extra_runs, total_runs, player_dissmissed,
-           dismissal_kind, fielder;
+    private  int INDEX_DELIVERY_MATCH_ID =0, INDEX_BATTING_TEAM =2, INDEX_EXTRA_RUNS =16, INDEX_BOWLER =8, INDEX_TOTAL_RUNS =17, INDEX_FIELDER =20;
+    private String deliveryId, deliveryInning, deliveryBattingTeam, deliveryBowlingTeam, deliveryOver, deliveryBall, deliveryBatsman, deliveryNonStriker, deliveryBowler,
+            deliveryIsSuperOver, deliveryWideRuns, deliveryByeRuns, deliveryLegByeRuns, deliveryNoBallRuns, deliveryPenaltyRuns, deliveryBatsmanRuns, deliveryExtraRuns,
+            deliveryTotalRuns, deliveryPlayerDismissed, deliveryDismissalKind, deliveryFielder;
 
     public Delivery(String[] deliveries_array){
-        this.match_id = deliveries_array[index_match_id];
-        this.batting_team = deliveries_array[index_batting_team];
-        this.extra_runs = deliveries_array[index_extra_runs];
-        this.bowler = deliveries_array[index_bowler];
-        this.total_runs = deliveries_array[index_total_runs];
+        this.deliveryId = deliveries_array[INDEX_DELIVERY_MATCH_ID];
+        this.deliveryBattingTeam = deliveries_array[INDEX_BATTING_TEAM];
+        this.deliveryExtraRuns = deliveries_array[INDEX_EXTRA_RUNS];
+        this.deliveryBowler = deliveries_array[INDEX_BOWLER];
+        this.deliveryTotalRuns = deliveries_array[INDEX_TOTAL_RUNS];
+        this.deliveryFielder = deliveries_array[INDEX_FIELDER];
     }
     //--------------------------------Getter----------------------------------
-    public String getMatchId() {
-        return match_id;
+    public String getDeliveryId() {
+        return deliveryId;
     }
-    public String getBattingTeam() {
-        return batting_team;
+    public String getDeliveryBattingTeam() {
+        return deliveryBattingTeam;
     }
-    public String getExtraRuns() {
-        return extra_runs;
+    public String getDeliveryExtraRuns() {
+        return deliveryExtraRuns;
     }
-    public String getBowler() {return bowler;}
-    public String getTotal_runs() {return total_runs;}
+    public String getDeliveryBowler() {return deliveryBowler;}
+    public String getDeliveryTotalRuns() {return deliveryTotalRuns;}
 }
 

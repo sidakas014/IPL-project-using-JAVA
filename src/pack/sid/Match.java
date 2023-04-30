@@ -1,29 +1,29 @@
 package pack.sid;
+
 class Match {
-    private int index_id=0, index_season=1, index_winner=10, index_toss_winner=6;
-    private  String id, season, city, date, team1, team2, toss_winner, toss_decision, result, dl_applied, winner, win_by_runs,
-            Win_by_wickets, player_of_match, venue, umpire1, umpire2, Umpire3;
-    public Match(String[] match_array){
-       this.id = match_array[index_id];
-       this.season = match_array[index_season];
-       this.winner = match_array[index_winner];
-       this.toss_winner = match_array[index_toss_winner];
+    private int INDEX_ID =0, INDEX_SEASON =1, INDEX_WINNER =10, INDEX_TOSS_WINNER =6, INDEX_VENUE =14;
+
+    private String matchId, matchSeason, matchCity, matchDate, matchTeam1, matchTeam2, matchTossWinner, matchTossDecision, matchResult, matchDlApplied, matchWinner, matchWinByRuns,
+            matchWinByWickets, matchPlayerOfMatch, matchVenue, matchUmpire1, matchUmpire2, matchUmpire3;
+   public Match(String[] match_array){
+       this.matchId = match_array[INDEX_ID];
+       this.matchSeason = match_array[INDEX_SEASON];
+       this.matchWinner = match_array[INDEX_WINNER];
+       this.matchTossWinner = match_array[INDEX_TOSS_WINNER];
+       this.matchVenue = match_array[INDEX_VENUE];
    }
-    //------------------------------Getter--------------------------------------
-    public String getId() {
-        return id;
+    //-------------------------Getter-----------------------------------------
+    public String getMatchId() {
+        return matchId;
     }
-
-    public String getSeason() {
-        return season;
+    public String getMatchSeason() {
+        return matchSeason;
     }
-
-    public String getWinner() {
-        return winner;
+    public String getMatchWinner() {
+        return matchWinner;
     }
-
-    public String getToss_winner() {
-        return toss_winner;
+    public String getMatchTossWinner() {
+        return matchTossWinner;
     }
 }
 
