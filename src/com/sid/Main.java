@@ -1,4 +1,4 @@
-package pack.sid;
+package com.sid;
 
 import java.util.*;
 import java.io.*;
@@ -92,7 +92,8 @@ public class Main{
         }
         HashMap<String, Double> economyRateOfAllPlayers = new HashMap();
         for (Map.Entry<String, Integer> bowlerTotalBowlIterator : bowlerTotalBowl.entrySet()){
-            double economyRateOfBowler = ((double) bowlerTotalRuns.get(bowlerTotalBowlIterator.getKey())*6.0)/(double) bowlerTotalBowl.get(bowlerTotalBowlIterator.getKey());
+            double economyRateOfBowler = ((double) bowlerTotalRuns.get(bowlerTotalBowlIterator.getKey())*6.0)/
+                    (double) bowlerTotalBowl.get(bowlerTotalBowlIterator.getKey());
             economyRateOfAllPlayers.put(bowlerTotalBowlIterator.getKey(), economyRateOfBowler);
         }
         double minimumEconomy = Double.MAX_VALUE;
@@ -123,7 +124,8 @@ public class Main{
         //Reading matches.csv file.
         ArrayList<String> wholeFileDataForMatches = new ArrayList();
         wholeFileDataForMatches = readCsvFile("/home/striker/Downloads/Experiment/IPL project using Java/DataSource/matches.csv");
-        ArrayList<Match> finalDataOfMatches = new ArrayList();                //finalDataOfMatches is ArrayList of a class called Match
+        //finalDataOfMatches is ArrayList of a class called Match
+        ArrayList<Match> finalDataOfMatches = new ArrayList();
 
         for(int i=0; i<wholeFileDataForMatches.size(); i++){
             String[] temporaryRowDataForMatches;
@@ -136,9 +138,9 @@ public class Main{
         ArrayList<Delivery> finalDataOfDeliveries = new ArrayList();
 
         for(int i=0; i<wholeFileDataForDeliveries.size(); i++){
-            String[] temporaryRowArrayListForDelivery;
-            temporaryRowArrayListForDelivery = wholeFileDataForDeliveries.get(i).split(",", -1);
-            finalDataOfDeliveries.add(new Delivery(temporaryRowArrayListForDelivery));
+            String[] temporaryRowDataForDeliveries;
+            temporaryRowDataForDeliveries = wholeFileDataForDeliveries.get(i).split(",", -1);
+            finalDataOfDeliveries.add(new Delivery(temporaryRowDataForDeliveries));
         }
 
         //----------------------------------QueriesAnswers method call-------------------------------------------------
