@@ -3,30 +3,39 @@ package com.sid;
 import java.util.*;
 import java.io.*;
 
-public class Main{
+public class Main {
+
+    static int INDEX_DELIVERY_MATCH_ID = 0;
+    static int INDEX_BATTING_TEAM = 2;
+    static int INDEX_EXTRA_RUNS = 16;
+    static int INDEX_BOWLER = 8;
+    static int INDEX_TOTAL_RUNS = 17;
+    static int INDEX_ID = 0;
+    static int INDEX_SEASON = 1;
+    static int INDEX_WINNER = 10;
+    static int INDEX_TOSS_WINNER = 6;
+
     public static ArrayList<String> readCsvFile(String csvFile) {
         try {
             File originalFile = new File(csvFile);
             FileReader fileReader = new FileReader(originalFile);
             BufferedReader bufferedReader = new BufferedReader(fileReader);
-            String line = "";
+            String line;
 
-            ArrayList<String> temporaryWholeData = new ArrayList();
+            ArrayList<String> temporaryWholeData = new ArrayList<>();
             while ((line = bufferedReader.readLine()) != null) {
                 temporaryWholeData.add(line);
             }
             return temporaryWholeData;
-        } catch (FileNotFoundException e1) {
-            e1.printStackTrace();
         } catch (Exception e) {
             e.printStackTrace();
         }
         return null;
     }
-    //----------------Queries----------------
-    //1st start
+
+    //----------------------------------Queries---------------------------------------------
     public static void matchesPlayedPerYear(ArrayList<Match> finalDataOfMatches) {
-        HashMap<String, Integer> numberOfMatchesPlayedPerYear = new HashMap();
+        HashMap<String, Integer> numberOfMatchesPlayedPerYear = new HashMap<>();
         for (int j = 1; j < finalDataOfMatches.size(); j++) {
             numberOfMatchesPlayedPerYear.put(finalDataOfMatches.get(j).getMatchSeason(),
                     numberOfMatchesPlayedPerYear.getOrDefault(finalDataOfMatches.get(j).getMatchSeason(), 0) + 1);
@@ -36,25 +45,25 @@ public class Main{
             System.out.println(numberOfMatchesPlayedIterator.getKey() + " -> " + numberOfMatchesPlayedIterator.getValue());
         }
     }
-    // 2th start
+
     public static void matchesWonByEachTeam(ArrayList<Match> finalDataOfMatches) {
-        HashMap<String, Integer> numberOfMatchesWonPerTeam = new HashMap();
+        HashMap<String, Integer> numberOfMatchesWonPerTeam = new HashMap<>();
         for (int k = 1; k < finalDataOfMatches.size(); k++) {
 
             numberOfMatchesWonPerTeam.put(finalDataOfMatches.get(k).getMatchWinner(),
                     numberOfMatchesWonPerTeam.getOrDefault(finalDataOfMatches.get(k).getMatchWinner(), 0) + 1);
         }
         for (Map.Entry<String, Integer> numberOfMatchesWonIterator : numberOfMatchesWonPerTeam.entrySet()) {
-            if(numberOfMatchesWonIterator.getKey().equals("")){
+            if (numberOfMatchesWonIterator.getKey().equals("")) {
                 continue;
             }
 
             System.out.println(numberOfMatchesWonIterator.getKey() + " -> " + numberOfMatchesWonIterator.getValue());
         }
     }
-    //3th start
-    public  static void extraRunsPerTeamIn2016(ArrayList<Match> finalDataOfMatches, ArrayList<Delivery> finalDataOfDeliveries) {
-        HashMap<String, Integer> numberOfExtraRunsPerTeam = new HashMap();
+
+    public static void extraRunsPerTeamIn2016(ArrayList<Match> finalDataOfMatches, ArrayList<Delivery> finalDataOfDeliveries) {
+        HashMap<String, Integer> numberOfExtraRunsPerTeam = new HashMap<>();
         for (int i = 1; i < finalDataOfMatches.size(); i++) {
             if (finalDataOfMatches.get(i).getMatchSeason().equals("2016")) {
                 String tempStr = finalDataOfMatches.get(i).getMatchId();
@@ -62,7 +71,7 @@ public class Main{
                     if (finalDataOfDeliveries.get(j).getDeliveryId().equals(tempStr)) {
                         numberOfExtraRunsPerTeam.put(finalDataOfDeliveries.get(j).getDeliveryBattingTeam(),
                                 numberOfExtraRunsPerTeam.getOrDefault(finalDataOfDeliveries.get(j).getDeliveryBattingTeam(), 0) +
-                                Integer.valueOf(finalDataOfDeliveries.get(j).getDeliveryExtraRuns()));
+                                        Integer.parseInt(finalDataOfDeliveries.get(j).getDeliveryExtraRuns()));
                     }
                 }
             }
@@ -71,11 +80,12 @@ public class Main{
             System.out.println(numberOfExtraRunsIterator.getKey() + " -> " + numberOfExtraRunsIterator.getValue());
         }
     }
+
     //04 start
-    public static void topEconomicalBowlerIn2015(ArrayList<Match> finalDataOfMatches, ArrayList<Delivery> finalDataOfDeliveries){
-        HashMap<String, Integer> bowlerTotalBowl = new HashMap();
-        HashMap<String, Integer> bowlerTotalRuns = new HashMap();
-        for (int i = 1; i < finalDataOfMatches.size(); i++){
+    public static void topEconomicalBowlerIn2015(ArrayList<Match> finalDataOfMatches, ArrayList<Delivery> finalDataOfDeliveries) {
+        HashMap<String, Integer> bowlerTotalBowl = new HashMap<>();
+        HashMap<String, Integer> bowlerTotalRuns = new HashMap<>();
+        for (int i = 1; i < finalDataOfMatches.size(); i++) {
             if (finalDataOfMatches.get(i).getMatchSeason().equals("2015")) {
                 String tempString = finalDataOfMatches.get(i).getMatchId();
                 for (int j = 1; j < finalDataOfDeliveries.size(); j++) {
@@ -84,31 +94,31 @@ public class Main{
                                 bowlerTotalBowl.getOrDefault(finalDataOfDeliveries.get(j).getDeliveryBowler(), 0) + 1);
                         bowlerTotalRuns.put(finalDataOfDeliveries.get(j).getDeliveryBowler(),
                                 bowlerTotalRuns.getOrDefault(finalDataOfDeliveries.get(j).getDeliveryBowler(), 0) +
-                                Integer.valueOf(finalDataOfDeliveries.get(j).getDeliveryTotalRuns()));
+                                        Integer.parseInt(finalDataOfDeliveries.get(j).getDeliveryTotalRuns()));
                     }
                 }
-
             }
         }
-        HashMap<String, Double> economyRateOfAllPlayers = new HashMap();
-        for (Map.Entry<String, Integer> bowlerTotalBowlIterator : bowlerTotalBowl.entrySet()){
-            double economyRateOfBowler = ((double) bowlerTotalRuns.get(bowlerTotalBowlIterator.getKey())*6.0)/
+        HashMap<String, Double> economyRateOfAllPlayers = new HashMap<>();
+        for (Map.Entry<String, Integer> bowlerTotalBowlIterator : bowlerTotalBowl.entrySet()) {
+            double economyRateOfBowler = ((double) bowlerTotalRuns.get(bowlerTotalBowlIterator.getKey()) * 6.0) /
                     (double) bowlerTotalBowl.get(bowlerTotalBowlIterator.getKey());
             economyRateOfAllPlayers.put(bowlerTotalBowlIterator.getKey(), economyRateOfBowler);
         }
         double minimumEconomy = Double.MAX_VALUE;
         String bestEconomyBowlerName = "";
-        for (Map.Entry<String, Double> economyRateOfAllPlayersIterator : economyRateOfAllPlayers.entrySet()){
-            if (minimumEconomy > economyRateOfAllPlayersIterator.getValue()){
+        for (Map.Entry<String, Double> economyRateOfAllPlayersIterator : economyRateOfAllPlayers.entrySet()) {
+            if (minimumEconomy > economyRateOfAllPlayersIterator.getValue()) {
                 minimumEconomy = economyRateOfAllPlayersIterator.getValue();
                 bestEconomyBowlerName = economyRateOfAllPlayersIterator.getKey();
             }
         }
-        System.out.println(bestEconomyBowlerName+" -> "+ minimumEconomy);
+        System.out.println(bestEconomyBowlerName + " -> " + minimumEconomy);
     }
+
     //5th start
     public static void tossWinnerTeam(ArrayList<Match> finalDataOfMatches) {
-        HashMap<String, Integer> allTossWinnerTeam = new HashMap();
+        HashMap<String, Integer> allTossWinnerTeam = new HashMap<>();
         for (int k = 1; k < finalDataOfMatches.size(); k++) {
             allTossWinnerTeam.put(finalDataOfMatches.get(k).getMatchTossWinner(),
                     allTossWinnerTeam.getOrDefault(finalDataOfMatches.get(k).getMatchTossWinner(), 0) + 1);
@@ -117,30 +127,43 @@ public class Main{
             System.out.println(allTossWinnerTeamIterator.getKey() + " -> " + allTossWinnerTeamIterator.getValue());
         }
     }
-
-
     //-----------------------------MainMethod-------------------------------------------------
-    public static void main(String[] args){
-        //Reading matches.csv file.
-        ArrayList<String> wholeFileDataForMatches = new ArrayList();
+    public static void main(String[] args) {
+
+        ArrayList<String> wholeFileDataForMatches;
         wholeFileDataForMatches = readCsvFile("/home/striker/Downloads/Experiment/IPL project using Java/DataSource/matches.csv");
-        //finalDataOfMatches is ArrayList of a class called Match
-        ArrayList<Match> finalDataOfMatches = new ArrayList();
+        ArrayList<Match> finalDataOfMatches = new ArrayList<>();
 
-        for(int i=0; i<wholeFileDataForMatches.size(); i++){
+        assert wholeFileDataForMatches != null;
+        for (String wholeFileDataForMatch : wholeFileDataForMatches) {
+            Match match;
+            match = new Match();
             String[] temporaryRowDataForMatches;
-            temporaryRowDataForMatches = wholeFileDataForMatches.get(i).split(",", -1);
-            finalDataOfMatches.add(new Match(temporaryRowDataForMatches));
+            temporaryRowDataForMatches = wholeFileDataForMatch.split(",", -1);
+            match.setMatchId(temporaryRowDataForMatches[INDEX_ID]);
+            match.setMatchSeason(temporaryRowDataForMatches[INDEX_SEASON]);
+            match.setMatchWinner(temporaryRowDataForMatches[INDEX_WINNER]);
+            match.setMatchTossWinner(temporaryRowDataForMatches[INDEX_TOSS_WINNER]);
+            finalDataOfMatches.add(match);
         }
-        //Reading deliveries.csv file.
-        ArrayList<String> wholeFileDataForDeliveries = new ArrayList();
-        wholeFileDataForDeliveries = readCsvFile("/home/striker/Downloads/Experiment/IPL project using Java/DataSource/deliveries.csv");
-        ArrayList<Delivery> finalDataOfDeliveries = new ArrayList();
 
-        for(int i=0; i<wholeFileDataForDeliveries.size(); i++){
+        ArrayList<String> wholeFileDataForDeliveries;
+        wholeFileDataForDeliveries = readCsvFile("/home/striker/Downloads/Experiment/IPL project using Java/DataSource/deliveries.csv");
+        ArrayList<Delivery> finalDataOfDeliveries = new ArrayList<>();
+
+        assert wholeFileDataForDeliveries != null;
+        for (String wholeFileDataForDelivery : wholeFileDataForDeliveries) {
+            Delivery delivery;
+            delivery = new Delivery();
             String[] temporaryRowDataForDeliveries;
-            temporaryRowDataForDeliveries = wholeFileDataForDeliveries.get(i).split(",", -1);
-            finalDataOfDeliveries.add(new Delivery(temporaryRowDataForDeliveries));
+            temporaryRowDataForDeliveries = wholeFileDataForDelivery.split(",", -1);
+
+            delivery.setDeliveryId(temporaryRowDataForDeliveries[INDEX_DELIVERY_MATCH_ID]);
+            delivery.setDeliveryBattingTeam(temporaryRowDataForDeliveries[INDEX_BATTING_TEAM]);
+            delivery.setDeliveryExtraRuns(temporaryRowDataForDeliveries[INDEX_EXTRA_RUNS]);
+            delivery.setDeliveryBowler(temporaryRowDataForDeliveries[INDEX_BOWLER]);
+            delivery.setDeliveryTotalRuns(temporaryRowDataForDeliveries[INDEX_TOTAL_RUNS]);
+            finalDataOfDeliveries.add(delivery);
         }
 
         //----------------------------------QueriesAnswers method call-------------------------------------------------

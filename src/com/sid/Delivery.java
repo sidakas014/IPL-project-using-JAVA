@@ -1,18 +1,7 @@
 package com.sid;
 class Delivery {
-    private  int INDEX_DELIVERY_MATCH_ID =0, INDEX_BATTING_TEAM =2, INDEX_EXTRA_RUNS =16, INDEX_BOWLER =8, INDEX_TOTAL_RUNS =17, INDEX_FIELDER =20;
-    private String deliveryId, deliveryInning, deliveryBattingTeam, deliveryBowlingTeam, deliveryOver, deliveryBall, deliveryBatsman, deliveryNonStriker, deliveryBowler,
-            deliveryIsSuperOver, deliveryWideRuns, deliveryByeRuns, deliveryLegByeRuns, deliveryNoBallRuns, deliveryPenaltyRuns, deliveryBatsmanRuns, deliveryExtraRuns,
-            deliveryTotalRuns, deliveryPlayerDismissed, deliveryDismissalKind, deliveryFielder;
+    private String deliveryId, deliveryBattingTeam, deliveryExtraRuns, deliveryBowler, deliveryTotalRuns;
 
-    public Delivery(String[] deliveryData){
-        this.deliveryId = deliveryData[INDEX_DELIVERY_MATCH_ID];
-        this.deliveryBattingTeam = deliveryData[INDEX_BATTING_TEAM];
-        this.deliveryExtraRuns = deliveryData[INDEX_EXTRA_RUNS];
-        this.deliveryBowler = deliveryData[INDEX_BOWLER];
-        this.deliveryTotalRuns = deliveryData[INDEX_TOTAL_RUNS];
-        this.deliveryFielder = deliveryData[INDEX_FIELDER];
-    }
     //--------------------------------Getter----------------------------------
     public String getDeliveryId() {
         return deliveryId;
@@ -28,6 +17,22 @@ class Delivery {
     }
     public String getDeliveryTotalRuns() {
         return deliveryTotalRuns;
+    }
+    //----------------------------------Setter------------------------------------
+    public void setDeliveryId(String deliveryId) {
+        this.deliveryId = deliveryId;
+    }
+    public void setDeliveryBattingTeam(String deliveryBattingTeam) {
+        this.deliveryBattingTeam = deliveryBattingTeam;
+    }
+    public void setDeliveryBowler(String deliveryBowler) {
+        this.deliveryBowler = deliveryBowler;
+    }
+    public void setDeliveryExtraRuns(String deliveryExtraRuns) {
+        this.deliveryExtraRuns = deliveryExtraRuns;
+    }
+    public void setDeliveryTotalRuns(String deliveryTotalRuns) {
+        this.deliveryTotalRuns = deliveryTotalRuns;
     }
 }
 
